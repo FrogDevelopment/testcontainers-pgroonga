@@ -1,0 +1,98 @@
+plugins {
+    id 'jacoco'
+    id 'java-library'
+    id 'maven-publish'
+    id 'org.sonarqube' version '2.7.1'
+    id 'io.freefair.lombok' version '3.2.0'
+    id 'com.jfrog.artifactory' version '4.9.7'
+    id 'fr.brouillard.oss.gradle.jgitver' version '0.9.1'
+}
+
+
+group 'org.testcontainers'
+description = 'testcontainers-pgroonga'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenLocal()
+    maven {
+        url = "$repoUrl/libs-public"
+    }
+}
+
+dependencies {
+    api 'io.jsonwebtoken:jjwt:0.9.1'
+
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+
+    testImplementation 'org.assertj:assertj-core:3.12.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.4.0'
+    testImplementation 'org.junit.platform:junit-platform-runner:1.4.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:2.25.0'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+jgitver {
+    mavenLike true
+}
+
+test {
+    reports.html.enabled = false
+
+    useJUnitPlatform {
+        includeTags 'unitTest'
+        excludeTags 'integrationTest'
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        xml.destination file("${buildDir}/reports/jacoco/test.xml")
+        csv.enabled false
+        html.enabled false
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test.xml"
+    }
+}
+
+project.tasks["sonarqube"].dependsOn "jacocoTestReport"
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = 'sources'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+
+            artifact sourcesJar
+        }
+    }
+}
+
+artifactoryPublish {
+    afterEvaluate {
+        clientConfig.publisher.repoKey = version?.endsWith('SNAPSHOT') ? 'libs-snapshot-local' : 'libs-release-local'
+    }
+    clientConfig.publisher.contextUrl = repoUrl
+    clientConfig.publisher.username = repoUsername
+    clientConfig.publisher.password = repoPassword
+    clientConfig.setIncludeEnvVars(true)
+
+    publications('maven')
+}
+
