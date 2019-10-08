@@ -8,8 +8,7 @@ plugins {
     id 'fr.brouillard.oss.gradle.jgitver' version '0.9.1'
 }
 
-
-group 'org.testcontainers'
+group 'fr.frogdevelopment'
 description = 'testcontainers-pgroonga'
 
 sourceCompatibility = JavaVersion.VERSION_11
@@ -23,16 +22,17 @@ repositories {
 }
 
 dependencies {
-    api 'io.jsonwebtoken:jjwt:0.9.1'
-
     implementation 'ch.qos.logback:logback-classic:1.2.3'
 
-    testImplementation 'org.assertj:assertj-core:3.12.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.4.0'
-    testImplementation 'org.junit.platform:junit-platform-runner:1.4.0'
-    testImplementation 'org.mockito:mockito-junit-jupiter:2.25.0'
+    implementation "org.testcontainers:postgresql:1.12.2"
+    implementation "org.testcontainers:junit-jupiter:1.12.2"
 
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.0'
+//    testImplementation 'org.assertj:assertj-core:3.12.2'
+//    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.4.0'
+//    testImplementation 'org.junit.platform:junit-platform-runner:1.4.0'
+//    testImplementation 'org.mockito:mockito-junit-jupiter:2.25.0'
+//
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.0'
 }
 
 tasks.withType(JavaCompile) {
