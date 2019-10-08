@@ -2,14 +2,7 @@
 Pgroonga module for [testcontainers](https://www.testcontainers.org/)
 
 ## Version 
-![version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
+![version](https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000)
 
 ## Jenkins  
-TODO [![Build Status]()
-
-## Sonar Cloud  
-TODO [![Quality Gate Status]()  
-TODO [![Security Rating]()  
-TODO [![Vulnerabilities]()  
-TODO [![Coverage]()  
-TODO [![Maintainability Rating]()  
+[![Build Status](https://jenkins.frog-development.com/buildStatus/icon?job=TestContainers%2Ftestcontainers-pgroonga%2Fmaster)](https://jenkins.frog-development.com/job/TestContainers/job/testcontainers-pgroonga/job/master/)
