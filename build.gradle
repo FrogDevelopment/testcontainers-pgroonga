@@ -1,9 +1,7 @@
 plugins {
-    id 'jacoco'
     id 'java-library'
     id 'maven-publish'
-    id 'org.sonarqube' version '2.7.1'
-    id 'io.freefair.lombok' version '3.2.0'
+    id 'io.freefair.lombok' version '4.1.6'
     id 'com.jfrog.artifactory' version '4.9.7'
     id 'fr.brouillard.oss.gradle.jgitver' version '0.9.1'
 }
@@ -22,18 +20,20 @@ repositories {
 }
 
 dependencies {
-    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    def logbackVersion = '1.2.3'
+    def postgresqlVersion = '42.2.8'
+    def testcontainersVersion = '1.12.3'
+    def springBootVersion = '2.2.0.RELEASE'
 
-    implementation 'org.postgresql:postgresql:42.2.7'
-    implementation "org.testcontainers:postgresql:1.12.2"
-    implementation "org.testcontainers:junit-jupiter:1.12.2"
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.6.RELEASE'
-    testImplementation 'org.springframework.boot:spring-boot-starter-jdbc:2.1.6.RELEASE'
-//    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.4.0'
-//    testImplementation 'org.junit.platform:junit-platform-runner:1.4.0'
+    implementation "ch.qos.logback:logback-classic:$logbackVersion"
 
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.0'
+    implementation "org.postgresql:postgresql:$postgresqlVersion"
+    implementation "org.testcontainers:postgresql:$testcontainersVersion"
+    implementation "org.testcontainers:junit-jupiter:$testcontainersVersion"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+    testImplementation "org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion"
 }
 
 tasks.withType(JavaCompile) {
@@ -50,23 +50,6 @@ test {
     useJUnitPlatform {
     }
 }
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        xml.destination file("${buildDir}/reports/jacoco/test.xml")
-        csv.enabled false
-        html.enabled false
-    }
-}
-
-sonarqube {
-    properties {
-        property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test.xml"
-    }
-}
-
-project.tasks["sonarqube"].dependsOn "jacocoTestReport"
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
