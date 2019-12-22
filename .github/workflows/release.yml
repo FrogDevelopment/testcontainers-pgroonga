@@ -13,7 +13,7 @@ jobs:
       - name: Branch name
         run: echo running on branch ${GITHUB_REF}
       - name: Prepare repository
-        run: git checkout "${GITHUB_REF:10}"
+        run: git checkout "${GITHUB_REF:11}"
       - name: Setup Java environment based on AdoptOpenJDK
         uses: joschi/setup-jdk@v1.0.0
         with:
