@@ -1,13 +1,6 @@
 name: CI
 
-on:
-  push:
-    branches:
-#      - master
-      - feature/*
-      - fix/*
-    tags-ignore:
-      - '**'
+on: [push]
 
 jobs:
   build:
@@ -30,4 +23,4 @@ jobs:
       - name: Test
         run: ./gradlew test
       - name: Publish
-        run: ./gradlew artifactoryPublish -Djgitver.branch=${GITHUB_REF##*/} -PrepoUsername=${{ secrets.REPO_USR }} -PrepoPassword=${{ secrets.REPO_PSW }}
+        run: ./gradlew artifactoryPublish -PrepoUsername=${{ secrets.REPO_USR }} -PrepoPassword=${{ secrets.REPO_PSW }}
