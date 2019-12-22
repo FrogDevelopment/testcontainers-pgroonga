@@ -25,9 +25,9 @@ jobs:
           openjdk_impl: openj9
       - name: Init
         run: ./gradlew version
-#      - name: Compile
-#        run: ./gradlew classes
-#      - name: Test
-#        run: ./gradlew test
-#      - name: Publish
-#        run: ./gradlew artifactoryPublish -Djgitver.branch=${GITHUB_REF##*/} -PrepoUsername=${{ secrets.REPO_USR }} -PrepoPassword=${{ secrets.REPO_PSW }}
+      - name: Compile
+        run: ./gradlew classes
+      - name: Test
+        run: ./gradlew test
+      - name: Publish
+        run: ./gradlew artifactoryPublish -Djgitver.branch=${GITHUB_REF##*/} -PrepoUsername=${{ secrets.REPO_USR }} -PrepoPassword=${{ secrets.REPO_PSW }}
