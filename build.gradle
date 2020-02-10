@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'io.freefair.lombok' version '4.1.6'
-    id 'com.jfrog.artifactory' version '4.9.7'
+    id 'com.jfrog.artifactory' version '4.13.0'
     id 'fr.brouillard.oss.gradle.jgitver' version '0.9.1'
 }
 
