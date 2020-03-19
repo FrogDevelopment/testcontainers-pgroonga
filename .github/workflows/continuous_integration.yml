@@ -22,5 +22,5 @@ jobs:
         run: ./gradlew classes
       - name: Test
         run: ./gradlew test
-      - name: Publish
-        run: ./gradlew artifactoryPublish -PrepoUsername=${{ secrets.REPO_USR }} -PrepoPassword=${{ secrets.REPO_PSW }}
+#      - name: Publish
+#        run: ./gradlew artifactoryPublish -PrepoUsername=${{ secrets.REPO_USR }} -PrepoPassword=${{ secrets.REPO_PSW }}
