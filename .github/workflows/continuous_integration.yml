@@ -12,7 +12,7 @@ jobs:
       - name: Prepare repository
         run: git checkout "${GITHUB_REF:11}"
       - name: Setup Java environment based on AdoptOpenJDK
-        uses: joschi/setup-jdk@v1.0.0
+        uses: joschi/setup-jdk@v1
         with:
           java-version: openjdk11
           openjdk_impl: openj9
