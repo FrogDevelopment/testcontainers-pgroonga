@@ -20,7 +20,7 @@ repositories {
 dependencies {
     def logbackVersion = '1.2.3'
     def postgresqlVersion = '42.2.18'
-    def testcontainersVersion = '1.14.3'
+    def testcontainersVersion = '1.15.0'
     def springBootVersion = '2.3.5.RELEASE'
 
     implementation "ch.qos.logback:logback-classic:$logbackVersion"
