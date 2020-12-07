@@ -12,7 +12,7 @@ import org.testcontainers.jdbc.ConnectionUrl;
 public class PgroongaContainerProvider extends JdbcDatabaseContainerProvider {
 
     private static final String NAME = "pgroonga";
-    private static final String DEFAULT_TAG = "2.2.1-alpine-11-slim";
+    private static final String DEFAULT_TAG = "2.2.7-alpine-13-slim";
     private static final String DEFAULT_IMAGE = "groonga/pgroonga";
     public static final String USER_PARAM = "user";
     public static final String PASSWORD_PARAM = "password";
