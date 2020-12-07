@@ -85,6 +85,6 @@ jar {
 }
 
 wrapper {
-    gradleVersion = "6.4"
+    gradleVersion = "6.7"
     distributionType = Wrapper.DistributionType.ALL
 }
