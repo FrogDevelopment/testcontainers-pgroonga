@@ -1,4 +1,4 @@
-package fr.frogdevelopment.testcontainers.containers;
+package com.frogdevelopment.testcontainers.containers;
 
 import org.testcontainers.containers.JdbcDatabaseContainer;
 import org.testcontainers.containers.JdbcDatabaseContainerProvider;

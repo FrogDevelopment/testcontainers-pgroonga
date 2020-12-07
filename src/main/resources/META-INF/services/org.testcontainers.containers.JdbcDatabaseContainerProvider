@@ -1,1 +1,1 @@
-fr.frogdevelopment.testcontainers.containers.PgroongaContainerProvider
+com.frogdevelopment.testcontainers.containers.PgroongaContainerProvider
