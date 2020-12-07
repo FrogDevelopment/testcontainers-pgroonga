@@ -4,6 +4,7 @@ import org.testcontainers.containers.JdbcDatabaseContainer;
 import org.testcontainers.containers.JdbcDatabaseContainerProvider;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.jdbc.ConnectionUrl;
+import org.testcontainers.utility.DockerImageName;
 
 /**
  * Factory for pgroonga container, which is PostgreSQL with groonga extension.
@@ -29,7 +30,7 @@ public class PgroongaContainerProvider extends JdbcDatabaseContainerProvider {
 
     @Override
     public JdbcDatabaseContainer newInstance(String tag) {
-        return new PostgreSQLContainer(DEFAULT_IMAGE + ":" + tag);
+        return new PostgreSQLContainer(DockerImageName.parse(DEFAULT_IMAGE + ":" + tag).asCompatibleSubstituteFor("postgres"));
     }
 
     @Override
