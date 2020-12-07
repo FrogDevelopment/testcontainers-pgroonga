@@ -18,13 +18,23 @@ jobs:
         with:
           fetch-depth: 0
 
+    - name: Cache gradle
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+
       - name: Setup Java 11
         uses: joschi/setup-jdk@v2
         with:
           java-version: '11'
 
       - name: Compile
-        run: ./gradlew classes
+        run: ./gradlew version classes
 
       - name: Test
         run: ./gradlew test
