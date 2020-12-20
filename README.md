@@ -17,7 +17,7 @@ Add it in your root `build.gradle` at the end of repositories:
 ##### Step 2. Add the dependency
 ```groovy
 	dependencies {
-	        implementation 'com.frog-development:testcontainers-pgroonga:1.1.1'
+	        implementation 'com.frog-development:testcontainers-pgroonga:1.1.2'
 	}
 ```
 ##### Step 3. Use the Testcontainer PgRoonga module
