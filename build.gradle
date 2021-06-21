@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     def logbackVersion = '1.2.3'
-    def postgresqlVersion = '42.2.20'
+    def postgresqlVersion = '42.2.22'
     def testcontainersVersion = '1.15.3'
     def springBootVersion = '2.5.0'
 
