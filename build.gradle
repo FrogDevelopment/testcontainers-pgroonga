@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven'
-    id 'io.freefair.lombok' version '6.1.0'
+    id 'io.freefair.lombok' version '6.2.0'
     id 'fr.brouillard.oss.gradle.jgitver' version '0.9.1'
 }
 
@@ -19,9 +19,9 @@ repositories {
 
 dependencies {
     def logbackVersion = '1.2.6'
-    def postgresqlVersion = '42.2.23'
+    def postgresqlVersion = '42.2.24'
     def testcontainersVersion = '1.15.3'
-    def springBootVersion = '2.5.3'
+    def springBootVersion = '2.5.5'
 
     implementation "ch.qos.logback:logback-classic:$logbackVersion"
 
